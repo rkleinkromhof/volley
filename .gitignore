@@ -1,0 +1,10 @@
+# webstorm ide settings
+.idea
+# sencha framework and generated files
+.sencha
+build
+ext
+packages
+bootstrap.css
+bootstrap.js
+bootstrap.json
