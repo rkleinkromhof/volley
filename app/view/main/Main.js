@@ -9,35 +9,57 @@ Ext.define('Volley.view.main.Main', {
     extend: 'Ext.container.Container',
 
     xtype: 'app-main',
-    
+
+    session: {},
     controller: 'main',
     viewModel: {
         type: 'main'
     },
 
-    layout: {
-        type: 'border'
-    },
+    layout: 'border',
 
-    items: [{
-        xtype: 'panel',
-        bind: {
-            title: '{name}'
+    items: [
+        {
+            region: 'west',
+            xtype: 'grid',
+            reference: 'competitionsGrid',
+            title: 'Toernooien',
+            hideHeaders: true,
+            width: 250,
+            split: true,
+            collapsible: true,
+            selModel: {
+                listeners: {
+                    selectionchange: 'onCompetitionChange'
+                }
+            },
+            bind: {
+                store: '{competitions}'/*,
+                // Bind the project for the current user as the default selection (single).
+                selection: {
+                    bindTo: '{currentCompetition}',
+                    single: true
+                }*/
+            },
+            columns: [
+                {
+                    flex: 1,
+                    sortable: true,
+                    dataIndex: 'year'
+                }
+            ]
         },
-        region: 'west',
-        html: '<ul><li>This area is commonly used for navigation, for example, using a "tree" component.</li></ul>',
-        width: 250,
-        split: true,
-        tbar: [{
-            text: 'Button',
-            handler: 'onClickButton'
-        }]
-    },{
-        region: 'center',
-        xtype: 'tabpanel',
-        items:[{
-            title: 'Tab 1',
-            html: '<h2>Content appropriate for the current navigation.</h2>'
-        }]
-    }]
+        {
+            xtype: 'panel',
+            region: 'center',
+            flex: 1,
+            items: [
+                {
+                    xtype: 'component',
+                    title: 'Dashboard',
+                    bind: 'Max teams: {competitionsGrid.selection.teams.max}'
+                }
+            ]
+        }
+    ]
 });

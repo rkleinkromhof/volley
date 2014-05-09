@@ -14,13 +14,7 @@ Ext.define('Volley.view.main.MainController', {
 
     alias: 'controller.main',
 
-    onClickButton: function () {
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
-    },
+    onCompetitionChange: function () {
 
-    onConfirm: function (choice) {
-        if (choice === 'yes') {
-            //
-        }
     }
 });

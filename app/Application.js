@@ -5,23 +5,25 @@
  */
 Ext.define('Volley.Application', {
     extend: 'Ext.app.Application',
-    
+    requires: [
+        'Firebase.*'
+    ],
+
     name: 'Volley',
 
     views: [
-        // TODO: add views here
+
     ],
 
     controllers: [
         'Root'
-        // TODO: add controllers here
     ],
 
     stores: [
-        // TODO: add stores here
+
     ],
-    
+
     launch: function () {
-        // TODO - Launch the application
+
     }
 });

@@ -3,12 +3,30 @@
  */
 Ext.define('Volley.view.main.MainModel', {
     extend: 'Ext.app.ViewModel',
+    requires: [
+        'Volley.model.Competition'
+    ],
 
     alias: 'viewmodel.main',
 
-    data: {
-        name: 'Volley'
-    }
+    stores: {
+        competitions: {
+            model: 'Competition',
+            autoLoad: true,
+            sorters: [{
+                property: 'start',
+                direction: 'DESC'
+            }]
+        }
+    }/*,
 
-    //TODO - add data, formulas and/or methods to support your view
+    formulas: {
+        currentCompetition: {
+            single: true,
+            get: function (data) {
+                debugger;
+                return data.competitions.first(); // TODO dun werk, fix pl0x
+            }
+        }
+    }*/
 });
